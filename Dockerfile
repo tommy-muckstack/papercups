@@ -7,6 +7,9 @@ WORKDIR /app
 COPY assets/package*.json assets/
 RUN cd assets && npm install --production
 
+# Set OpenSSL legacy provider for Node.js 20 compatibility
+ENV NODE_OPTIONS=--openssl-legacy-provider
+
 # Copy assets and build frontend
 COPY assets assets/
 RUN cd assets && npm run build
