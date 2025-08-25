@@ -1,4 +1,18 @@
-FROM elixir:1.11.3-alpine as builder
+# Stage 1: Build frontend with Node.js 20
+FROM node:20-alpine as frontend
+
+WORKDIR /app
+
+# Copy and install frontend dependencies
+COPY assets/package*.json assets/
+RUN cd assets && npm install --production
+
+# Copy assets and build frontend
+COPY assets assets/
+RUN cd assets && npm run build
+
+# Stage 2: Build Elixir app
+FROM elixir:1.14-alpine as builder
 
 # build step
 ARG MIX_ENV=prod
@@ -25,19 +39,10 @@ ENV PAPERCUPS_STRIPE_SECRET=$PAPERCUPS_STRIPE_SECRET
 RUN mkdir /app
 WORKDIR /app
 
-RUN apk add --no-cache git nodejs yarn python3 npm ca-certificates wget gnupg make erlang gcc libc-dev && \
-    npm install npm@latest -g
+RUN apk add --no-cache git python3 ca-certificates wget gnupg make erlang gcc libc-dev
 
-# Client side
-COPY assets/package.json assets/package-lock.json ./assets/
-RUN npm install --prefix=assets
-
-# fix because of https://github.com/facebook/create-react-app/issues/8413
-ENV GENERATE_SOURCEMAP=false
-
-COPY priv priv
-COPY assets assets
-RUN npm run build --prefix=assets
+# Copy built frontend assets from frontend stage  
+COPY --from=frontend /app/assets/build ./assets/build
 
 COPY mix.exs mix.lock ./
 COPY config config
