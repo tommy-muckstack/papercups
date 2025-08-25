@@ -1,0 +1,15 @@
+[phases.setup]
+nixPkgs = ["...", "nodejs", "yarn"]
+
+[phases.build]
+cmds = [
+  "mix deps.get --only prod",
+  "npm install --prefix ./assets --production",
+  "npm run build --prefix ./assets",
+  "mix phx.digest",
+  "mix compile",
+  "mix release papercups"
+]
+
+[start]
+cmd = "_build/prod/rel/papercups/bin/papercups eval \"ChatApi.Release.migrate()\" && _build/prod/rel/papercups/bin/papercups start"
