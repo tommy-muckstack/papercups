@@ -1,11 +1,11 @@
 [phases.setup]
-nixPkgs = ["...", "nodejs", "yarn"]
+nixPkgs = ["...", "nodejs_20", "yarn"]
 
 [phases.build]
 cmds = [
   "mix deps.get --only prod",
-  "npm install --prefix ./assets --production",
-  "npm run build --prefix ./assets",
+  "cd assets && npm install --production",
+  "cd assets && npm run build",
   "mix phx.digest",
   "mix compile",
   "mix release papercups"
