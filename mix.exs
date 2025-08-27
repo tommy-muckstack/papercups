@@ -39,6 +39,7 @@ defmodule ChatApi.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:castore, "~> 0.1"},
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
       {:ex_machina, "~> 2.4", only: [:test]},
