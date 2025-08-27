@@ -2,9 +2,9 @@
 set -e
 
 if [[ "$1" = 'run' ]]; then
+    echo "Running database migrations..."
+    /app/bin/papercups eval "ChatApi.Release.migrate()" || echo "Migration failed, continuing startup..."
     echo "Starting application..."
-    # Temporarily skip migrations due to connection issues
-    # /app/bin/papercups eval "ChatApi.Release.migrate()"
     exec /app/bin/papercups start
 
 elif [[ "$1" = 'db' ]]; then
