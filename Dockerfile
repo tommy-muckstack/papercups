@@ -15,7 +15,7 @@ COPY assets assets/
 RUN cd assets && npm run build
 
 # Stage 2: Build Elixir app
-FROM elixir:1.14-alpine as builder
+FROM elixir:1.14.5-alpine as builder
 
 # build step
 ARG MIX_ENV=prod
