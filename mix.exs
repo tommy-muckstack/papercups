@@ -69,7 +69,6 @@ defmodule ChatApi.MixProject do
       {:stripity_stripe, "~> 2.0"},
       {:oban, "~> 2.8.0"},
       {:sentry, "8.0.0"},
-      {:google_api_gmail, "~> 0.21"},
       {:oauth2, "~> 0.9"},
       {:mail, "~> 0.2"},
       # {:phoenix_swagger, "~> 0.8"}, # Temporarily disabled for Phoenix 1.6+ compatibility
