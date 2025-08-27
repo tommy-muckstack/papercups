@@ -66,8 +66,8 @@ WORKDIR /app
 COPY rel rel
 RUN mix release papercups
 
-FROM alpine:3.13 AS app
-RUN apk add --no-cache openssl ncurses-libs
+FROM alpine:3.17 AS app
+RUN apk add --no-cache openssl ncurses-libs libgcc libstdc++
 ENV LANG=C.UTF-8
 EXPOSE 4000
 
