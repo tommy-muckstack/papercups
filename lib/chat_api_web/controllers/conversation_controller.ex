@@ -1,6 +1,6 @@
 defmodule ChatApiWeb.ConversationController do
   use ChatApiWeb, :controller
-  use PhoenixSwagger
+  # use PhoenixSwagger # Temporarily disabled for Phoenix 1.6+ compatibility
 
   alias ChatApi.{Conversations, Inboxes, Messages}
   alias ChatApi.Conversations.{Conversation, Helpers}
