@@ -47,8 +47,8 @@ defmodule ChatApi.Application do
       ChatApiWeb.Presence,
       # Start the Endpoint (http/https)
       ChatApiWeb.Endpoint,
-      # Start Oban workers
-      {Oban, oban_config()},
+      # Start Oban workers - temporarily disabled for DB connection debugging
+      # {Oban, oban_config()},
       # Automatically delete expired session records
       {Pow.Postgres.Store.AutoDeleteExpired, [interval: :timer.hours(1)]}
       # Start a worker by calling: ChatApi.Worker.start_link(arg)
