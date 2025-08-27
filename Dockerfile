@@ -56,6 +56,10 @@ RUN mix local.hex --force && \
 
 COPY lib lib
 RUN mix deps.compile
+
+# Create priv/static directory and copy frontend assets
+RUN mkdir -p priv/static
+COPY --from=frontend /app/assets/build ./priv/static
 RUN mix phx.digest priv/static
 
 WORKDIR /app

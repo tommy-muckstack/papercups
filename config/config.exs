@@ -26,7 +26,9 @@ config :phoenix, :json_library, Jason
 # Set up timezone database
 config :elixir, :time_zone_database, Tzdata.TimeZoneDatabase
 
-config :tesla, adapter: Tesla.Adapter.Hackney
+config :tesla, 
+  adapter: Tesla.Adapter.Hackney,
+  disable_deprecated_builder_warning: true
 
 # Configure Swagger
 config :phoenix_swagger, json_library: Jason
