@@ -22,7 +22,7 @@ defmodule ChatApiWeb do
       use Phoenix.Controller, namespace: ChatApiWeb
 
       import Plug.Conn
-      import ChatApiWeb.Gettext
+      use Gettext, backend: ChatApiWeb.Gettext
       alias ChatApiWeb.Router.Helpers, as: Routes
     end
   end
@@ -37,8 +37,12 @@ defmodule ChatApiWeb do
       import Phoenix.Controller,
         only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
 
-      # Include shared imports and aliases for views
-      unquote(view_helpers())
+      # Import basic rendering functionality (render, render_layout, etc)
+      import Phoenix.View
+
+      import ChatApiWeb.ErrorHelpers
+      use Gettext, backend: ChatApiWeb.Gettext
+      alias ChatApiWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -54,20 +58,10 @@ defmodule ChatApiWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import ChatApiWeb.Gettext
+      use Gettext, backend: ChatApiWeb.Gettext
     end
   end
 
-  defp view_helpers do
-    quote do
-      # Import basic rendering functionality (render, render_layout, etc)
-      import Phoenix.View
-
-      import ChatApiWeb.ErrorHelpers
-      import ChatApiWeb.Gettext
-      alias ChatApiWeb.Router.Helpers, as: Routes
-    end
-  end
 
   @doc """
   When used, dispatch to the appropriate controller/view/etc.

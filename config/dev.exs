@@ -53,13 +53,13 @@ config :chat_api, ChatApiWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :chat_api, OpusWeb.Endpoint,
+config :chat_api, ChatApiWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/opus_web/(live|views)/.*(ex)$",
-      ~r"lib/opus_web/templates/.*(eex)$"
+      ~r"lib/chat_api_web/(live|views)/.*(ex)$",
+      ~r"lib/chat_api_web/templates/.*(eex)$"
     ]
   ]
 

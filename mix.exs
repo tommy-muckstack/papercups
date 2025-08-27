@@ -51,6 +51,7 @@ defmodule ChatApi.MixProject do
       {:swoosh, "~> 1.0"},
       {:gen_smtp, "~> 0.13"},
       {:phoenix, "~> 1.6.15"},
+      {:phoenix_view, "~> 2.0"},
       {:phoenix_ecto, "~> 4.1"},
       {:ecto_sql, "~> 3.6"},
       {:postgrex, "~> 0.16.0"},

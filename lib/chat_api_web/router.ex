@@ -26,10 +26,10 @@ defmodule ChatApiWeb.Router do
     plug(ChatApiWeb.PublicAPIAuthPlug, otp_app: :chat_api)
   end
 
-  # Swagger
-  scope "/api/swagger" do
-    forward("/", PhoenixSwagger.Plug.SwaggerUI, otp_app: :chat_api, swagger_file: "swagger.json")
-  end
+  # Swagger - temporarily disabled for Phoenix 1.6+ compatibility
+  # scope "/api/swagger" do
+  #   forward("/", PhoenixSwagger.Plug.SwaggerUI, otp_app: :chat_api, swagger_file: "swagger.json")
+  # end
 
   # Public routes
   scope "/api", ChatApiWeb do
