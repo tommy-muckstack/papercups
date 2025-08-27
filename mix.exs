@@ -75,7 +75,7 @@ defmodule ChatApi.MixProject do
       # {:phoenix_swagger, "~> 0.8"}, # Temporarily disabled for Phoenix 1.6+ compatibility
       {:uuid, "~> 1.1"},
       {:ex_json_schema, "~> 0.5"},
-      {:pow_postgres_store, "~> 1.0.0-rc2"},
+      {:pow_postgres_store, "~> 1.0.0"},
       {:tzdata, "~> 1.0.5"},
       {:scrivener_ecto, "~> 2.0"},
       {:floki, "~> 0.30.0"},
