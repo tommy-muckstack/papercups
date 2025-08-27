@@ -14,7 +14,7 @@ socket_options =
     _ -> [:inet]
   end
 
-pool_size = String.to_integer(System.get_env("POOL_SIZE") || "10")
+pool_size = String.to_integer(System.get_env("POOL_SIZE") || "5")
 
 if config_env() === :prod do
   # Only require these vars at runtime, not during build
@@ -31,7 +31,9 @@ if config_env() === :prod do
     url: database_url,
     show_sensitive_data_on_connection_error: false,
     socket_options: socket_options,
-    pool_size: pool_size
+    pool_size: pool_size,
+    queue_target: 5000,
+    queue_interval: 1000
 
   ssl_key_path = System.get_env("SSL_KEY_PATH")
   ssl_cert_path = System.get_env("SSL_CERT_PATH")
